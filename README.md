@@ -58,6 +58,10 @@ http://localhost:2000
 > docker exec -it <container> /bin/sh -> entrar em um container específico
 ```
 
+## Notas
+```
+ - Existe uma collection das APIs criadas na pasta postman no raiz do projeto
+```
 
 
 
