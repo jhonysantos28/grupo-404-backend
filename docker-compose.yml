@@ -15,7 +15,7 @@ services:
     build: .
     ports:
       - '2000:2000'
-    command: npm run dev 
+    command:  sh -c "yarn install && yarn run dev"
     volumes:
       - .:/usr/app/
     environment:
