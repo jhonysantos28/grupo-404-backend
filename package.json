@@ -1,0 +1,31 @@
+{
+  "name": "grupo-404-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./bin/server.js",
+  "scripts": {
+    "start": "npx sequelize db:migrate; npx sequelize db:seed:all; node ./bin/server.js",
+    "dev": "npx sequelize db:migrate; npx sequelize db:seed:all; nodemon ./bin/server.js"
+  },
+  "author": "Grupo 404",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.0",
+    "pg": "^8.5.1",
+    "request": "^2.88.2",
+    "sequelize": "^5.22.3",
+    "sequelize-cli": "^5.5.1",
+    "swagger-ui-express": "^4.1.6",
+    "underscore": "^1.12.0"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.9",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.4"
+  }
+}

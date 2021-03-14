@@ -1,0 +1,57 @@
+{
+  "swagger": "2.0",
+  "host": "localhost:2000",
+  "basePath": "/",
+  "info": {
+    "title": "Grupo 404 micro-service",
+    "description": "Micro-serviços GRUPO 404.",
+    "version": "1.0.0"
+  },
+
+  "schemes": [
+    "http", "https"
+  ],
+
+  "tags": [
+    {
+      "name": "User",
+      "description": "Rotas para gerenciamento de usuários."
+    }
+  ],
+
+  "paths": {
+  },
+
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["name", "email", "phone", "login", "password"]
+    }
+  }
+}
