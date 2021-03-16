@@ -1,6 +1,5 @@
 const output = require('../models/Output');
 const user = require('../models/User');
-const bcrypt = require('bcrypt');
 
 /**
  * Return an user collection
@@ -31,17 +30,8 @@ exports.insertUser = async (req, res) => {
         if (Object.keys(req.body).length === 0){
             throw new Error("Raw body is required");
         }
-
         const userModel = new user();
-
-        const userBody = req.body;
-        
-        // add criptografia na senha
-        const salt = bcrypt.genSaltSync(10);
-        userBody.password = bcrypt.hashSync(userBody.password, salt);
-  
-        // salva senha com criptografia
-        await userModel.create(userBody);
+        await userModel.create(req.body);
 
         return output.responseJson(true, 'Insert user', res, 200);
     } catch (err) {

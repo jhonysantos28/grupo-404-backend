@@ -1,6 +1,8 @@
 const Response    = require('./Response');
 const validator   = require('./User/Validator');
 const filter      = require('./User/Filter');
+const bcrypt      = require('bcrypt');
+
 const entities = require('./Entities');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -47,6 +49,8 @@ class User
      */
     async create(data)
     {
+        // add criptografia na senha
+        let salt = bcrypt.genSaltSync(10);
 
         if (!this.validator.validate(data) || !data.password) {
             throw new Error(this.validator.error);
@@ -58,7 +62,7 @@ class User
                 'email': data.email,
                 'phone': data.phone,
                 'login': data.login,
-                'password': data.password,
+                'password': bcrypt.hashSync(data.password, salt),
                 'enabled': true
             };
 
