@@ -146,6 +146,41 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "[POST] User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"taynerjhony22\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:2000/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "2000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
