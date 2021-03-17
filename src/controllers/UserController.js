@@ -58,9 +58,18 @@ exports.insertUser = async (req, res) => {
             throw new Error("Raw body is required");
         }
         const userModel = new user();
-        await userModel.create(req.body);
+        let data = await userModel.create(req.body);
 
-        return output.responseJson(true, 'Insert user', res, 200);
+        let msg = 'Insert user';
+        let status = true;
+        let statusCode = 200;
+        if (!data.hasOwnProperty('dataValues')) {
+             msg = 'Fail to Insert user';
+             status = false;
+             statusCode = 400;
+        }
+
+        return output.responseJson(status, msg, res, statusCode);
     } catch (err) {
         return output.responseError(err, res, 400);
     }

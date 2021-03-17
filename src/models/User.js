@@ -66,12 +66,10 @@ class User
                 'enabled': true
             };
 
-         await this.entityUser.create(valuesUser);
+            return await this.entityUser.create(valuesUser);
         } catch (e) {
             return e.message;
         }
-
-        return true;
     }
 
     /**
