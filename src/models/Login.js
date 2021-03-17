@@ -26,9 +26,16 @@ class Login
                 raw: true
             });
 
-            return {
-                "login" : await bcrypt.compare(requestPassword, userDataBase.password)
+            let dataReturn = {};
+            dataReturn.login = await bcrypt.compare(requestPassword, userDataBase.password);
+
+            if(dataReturn.login) {
+                dataReturn.id = userDataBase.id;
+                dataReturn.email = userDataBase.email;
+                dataReturn.name = userDataBase.name;
             }
+
+            return dataReturn;
         } catch (e) {
             return e.message;
         }
