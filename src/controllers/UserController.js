@@ -1,5 +1,32 @@
 const output = require('../models/Output');
 const user = require('../models/User');
+const login = require('../models/Login');
+/**
+ * Request to create a login user
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+exports.login = async (req, res) => {
+    try {
+        let requestEmail = req.body.email;
+        let requestPassword = req.body.password;
+
+        if (!requestEmail || !requestPassword){
+            throw new Error("Required params (email, password)");
+        }
+
+        const loginModel = new login();
+        const data = await loginModel.checkCredential(requestEmail, requestPassword);
+
+        res.type('json');
+
+        return res.json(data);
+    } catch (err) {
+        return output.responseError(err, res, 400);
+    }
+};
 
 /**
  * Return an user collection
