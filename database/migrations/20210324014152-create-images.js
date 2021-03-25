@@ -2,7 +2,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.createTable('images', {
+      queryInterface.createTable('product_images', {
         id: {
           allowNull: false,
           autoIncrement: true,
@@ -21,9 +21,17 @@ module.exports = {
         },
         url: {
           type: Sequelize.STRING
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE
         }
       }).then(() => {
-        queryInterface.addConstraint('images', ['product_id','url'], {
+        queryInterface.addConstraint('product_images', ['product_id','url'], {
           type: 'unique',
           name: 'product_url_constraint'
         })
@@ -32,7 +40,7 @@ module.exports = {
   },
   down: (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.dropTable('images')
+      queryInterface.dropTable('product_images')
     ]);
   }
 };

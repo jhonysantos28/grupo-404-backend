@@ -21,10 +21,15 @@ module.exports = (sequelize, DataTypes) => {
       ]
   });
   Product.associate = function(models) {
-    Product.hasMany(models.images, {
+    Product.hasMany(models.product_images, {
+      sourceKey: 'id',
+      foreignKey: 'product_id'
+    });
+    Product.hasMany(models.user_product, {
       sourceKey: 'id',
       foreignKey: 'product_id'
     });
   };
+
   return Product;
 };
