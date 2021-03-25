@@ -41,43 +41,23 @@ module.exports = {
           allowNull: false,
           type: Sequelize.DATE
         }
-      }),
-      queryInterface.createTable('images', {
-        id: {
-          allowNull: false,
-          autoIncrement: true,
-          primaryKey: true,
-          type: Sequelize.INTEGER
-        },
-        product_id: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-          references: {
-            model: 'product',
-            key: 'id'
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
-        },
-        url: {
-          type: Sequelize.STRING
-        }
-      }),
-
-      queryInterface.addIndex('product', ['code'], {
-        unique: true
-      }),
-      queryInterface.addIndex('product', ['sku'], {
-        unique: true
-      }),
-      queryInterface.addIndex('product', ['slug_url'], {
-        unique: true
+      }).then(() => {
+        queryInterface.addIndex('product', ['code'], {
+          unique: true
+        })
+      }).then(() => {
+        queryInterface.addIndex('product', ['sku'], {
+          unique: true
+      }).then(() => {
+        queryInterface.addIndex('product', ['slug_url'], {
+          unique: true
+          });
+      });
       })
-  ]);
+    ]);
   },
   down: (queryInterface, Sequelize) => {
     return Promise.all([
-      queryInterface.dropTable('images'),
       queryInterface.dropTable('product')
     ]);
   }
