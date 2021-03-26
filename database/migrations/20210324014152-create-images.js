@@ -19,7 +19,7 @@ module.exports = {
           onUpdate: 'CASCADE',
           onDelete: 'CASCADE'
         },
-        url: {
+        path: {
           type: Sequelize.STRING
         },
         createdAt: {
@@ -31,9 +31,9 @@ module.exports = {
           type: Sequelize.DATE
         }
       }).then(() => {
-        queryInterface.addConstraint('product_images', ['product_id','url'], {
+        queryInterface.addConstraint('product_images', ['product_id','path'], {
           type: 'unique',
-          name: 'product_url_constraint'
+          name: 'product_path_constraint'
         })
       })
   ]);
