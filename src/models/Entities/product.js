@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define('product', {
+  const product = sequelize.define('product', {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     code: DataTypes.STRING,
@@ -20,16 +20,16 @@ module.exports = (sequelize, DataTypes) => {
         }
       ]
   });
-  Product.associate = function(models) {
-    Product.hasMany(models.product_images, {
+  product.associate = function(models) {
+    product.hasMany(models.productImages, {
       sourceKey: 'id',
       foreignKey: 'product_id'
     });
-    Product.hasMany(models.user_product, {
+    product.hasMany(models.userProduct, {
       sourceKey: 'id',
       foreignKey: 'product_id'
     });
   };
 
-  return Product;
+  return product;
 };
