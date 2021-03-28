@@ -1,24 +1,21 @@
 const Response    = require('./Response');
-const validator   = require('./User/Validator');
-const filter      = require('./User/Filter');
+const validator   = require('./Sequelize/Validator');
+const filter      = require('./Sequelize/Filter');
 const bcrypt      = require('bcrypt');
 
 const entities = require('./Entities');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-class User
+class Product
 {
     constructor() {
         this.validator = new validator();
-        this.entityUser = entities.user;
-        this.userProduct = entities.userProduct;
-        this.product = entities.product;
-        this.productImages = entities.productImages;
+        this.entityProduct = entities.product;
     }
 
     /**
-     * Return a User Collection
+     * Return a Product Collection
      *
      * @param data
      * @returns {Promise<*>}
@@ -29,39 +26,13 @@ class User
         const response       = new Response();
         const criteria       = await filterInstance.getCriteria();
 
-        const countData = await this.entityUser.count({where: criteria});
-        const bodyData = await this.entityUser.findAll({
-            attributes: {
-             exclude: [
-                'password',
-                'createdAt',
-                'updatedAt'
-             ]
-            },
+        const countData = await this.entityProduct.count({where: criteria});
+        const bodyData = await this.entityProduct.findAll({
+            attributes: {exclude: ['password']},
             where: criteria,
+            include: entities.productImages,
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
-            include: [{
-                attributes: {
-                    exclude: [
-                        'createdAt',
-                        'updatedAt'
-                    ],
-                },
-                model: this.userProduct,
-                include: [{
-                    attributes: {
-                        exclude: [
-                            'createdAt',
-                            'updatedAt'
-                        ],
-                    },
-                    model: this.product,
-                    include: [{
-                        model: this.productImages
-                    }]
-                }]
-            }],
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
         });
 
@@ -79,6 +50,7 @@ class User
      */
     async create(data)
     {
+        // add criptografia na senha
         let salt = bcrypt.genSaltSync(10);
 
         if (!this.validator.validate(data) || !data.password) {
@@ -86,7 +58,7 @@ class User
         }
 
         try {
-            const valuesUser = {
+            const valuesProduct = {
                 'name': data.name,
                 'email': data.email,
                 'phone': data.phone,
@@ -95,7 +67,7 @@ class User
                 'enabled': true
             };
 
-            return await this.entityUser.create(valuesUser);
+            return await this.entityProduct.create(valuesProduct);
         } catch (e) {
             return e.message;
         }
@@ -107,13 +79,13 @@ class User
      * @param id
      * @returns {Promise<void>}
      */
-    async findUserById(id)
+    async findProductById(id)
     {
-        const data = await this.entityUser.findAll({
+        const data = await this.entityProduct.findAll({
             where: {
                 id: id
             },
-            raw: true
+            include: entities.productImages
         });
 
         if (data.length === 0) {
@@ -136,7 +108,7 @@ class User
             throw new Error(this.validator.error);
         }
 
-       return await this.entityUser.update(data, {
+       return await this.entityProduct.update(data, {
             where: {
                 id: {
                     [Op.eq]: id
@@ -146,14 +118,14 @@ class User
     }
 
     /**
-     * Remove an user in postgres
+     * Remove an product in postgres
      *
      * @param id
      * @returns {Promise<*>}
      */
     async delete(id)
     {
-        let response = await this.entityUser.destroy({
+        let response = await this.entityProduct.destroy({
             where: {
                 id: {
                     [Op.eq]: id
@@ -170,4 +142,4 @@ class User
     }
 }
 
-module.exports = User;
+module.exports = Product;

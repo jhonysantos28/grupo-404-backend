@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const productImages =  sequelize.define('productImages', {
     product_id: DataTypes.INTEGER,
-    url: DataTypes.STRING
+    path: DataTypes.STRING
   }, {
     timestamps: false,
     tableName: 'product_images'

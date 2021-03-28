@@ -35,8 +35,7 @@ class Filter {
     /**
      * Return last page
      *
-     * @param {*} count
-     * @param {*} limit
+     * @param countData
      */
     getLastPage(countData) {
         const value = (countData < this.getLimit()) ? 1 : countData / this.getLimit();
@@ -92,7 +91,7 @@ class Filter {
         return Object.keys(this.data).reduce((filter = [], key) => {
             if (key !== 'page' && key !== 'limit') {
                 const obj = {};
-                obj[key] = Array.isArray(this.data[key]) ? { [Op.in]: this.data[key] } : { [Op.like]: '%' + this.data[key] + '%' };
+                obj[key] = Array.isArray(this.data[key]) ? { [Op.in]: this.data[key] } : { [Op.substring] : this.data[key]};
                 filter.push(obj);
             }
             return filter;

@@ -1,5 +1,5 @@
 const output = require('../models/Output');
-const product = require('../models/product');
+const product = require('../models/Product');
 
 /**
  * Return an product collection
