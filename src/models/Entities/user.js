@@ -18,6 +18,12 @@ module.exports = (sequelize, DataTypes) => {
         ]
       }
   );
+  user.associate = function(models) {
+    user.hasMany(models.userProduct, {
+      sourceKey: 'id',
+      foreignKey: 'user_id'
+    });
+  };
 
   return user;
 };

@@ -6,182 +6,310 @@
 	},
 	"item": [
 		{
-			"name": "[POST]  User Create ",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"taynerjhony@hotmail.com\",\n\t\"phone\": \"11986005601\",\n\t\"login\": \"taynerjhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "User",
+			"item": [
+				{
+					"name": "[GET]User Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "taynerjhony@hotmail.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Tayner",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Teste",
+									"disabled": true
+								}
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:2000/user",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[GET]User Collection",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:2000/user",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user"
-					],
-					"query": [
-						{
-							"key": "email",
-							"value": "taynerjhony@hotmail.com",
-							"disabled": true
+				{
+					"name": "[POST]  User Create ",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"taynerjhony@hotmail.com\",\n\t\"phone\": \"11986005601\",\n\t\"login\": \"taynerjhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "name",
-							"value": "Tayner",
-							"disabled": true
+						"url": {
+							"raw": "localhost:2000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] User Detail by Id ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PUT] User Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"taynerjhony@hotmail.com\",\n\t\"phone\": \"11986005601\",\n\t\"login\": \"taynerjhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
+						"url": {
+							"raw": "localhost:2000/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"1"
+							]
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[GET] User Detail by Id ",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:2000/user/1",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[PUT] User Update",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"taynerjhony@hotmail.com\",\n\t\"phone\": \"11986005601\",\n\t\"login\": \"taynerjhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:2000/user/1",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[DELETE] User Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:2000/user/1",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[POST] User Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"taynerjhony22\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "[DELETE] User Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "localhost:2000/user/login",
-					"host": [
-						"localhost"
-					],
-					"port": "2000",
-					"path": [
-						"user",
-						"login"
-					]
+				{
+					"name": "[POST] User Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"taynerjhony22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "[GET] Product Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "slug_url",
+									"value": "Teste",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Teste",
+									"disabled": true
+								},
+								{
+									"key": "qty",
+									"value": "10",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[POST]Product Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"product_images\": [\n        {\n            \"path\": \"path para a imagem1\"\n        },\n        {\n            \"path\": \"path para a imagem2\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PUT]Product Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Produtodsddddsd Teste 2dsdsd\",\n    \"description\": \"Produto Description teste\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/product/9",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[DELETE] Product Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/product/9",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product",
+								"9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

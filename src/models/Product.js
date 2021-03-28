@@ -1,24 +1,30 @@
 const Response    = require('./Response');
-const validator   = require('./User/Validator');
-const filter      = require('./User/Filter');
-const bcrypt      = require('bcrypt');
+const validator   = require('./Sequelize/Validator');
+const filter      = require('./Sequelize/Filter');
 
 const entities = require('./Entities');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-class User
+class Product
 {
     constructor() {
         this.validator = new validator();
-        this.entityUser = entities.user;
-        this.userProduct = entities.userProduct;
-        this.product = entities.product;
-        this.productImages = entities.productImages;
+        this.entityProduct = entities.product;
+        this.entityProductImage = entities.productImages;
+        this.baseFields = [
+            "id",
+            "description",
+            "code",
+            "active",
+            "price",
+            "qty",
+            "product_images"
+        ];
     }
 
     /**
-     * Return a User Collection
+     * Return a Product Collection
      *
      * @param data
      * @returns {Promise<*>}
@@ -29,39 +35,13 @@ class User
         const response       = new Response();
         const criteria       = await filterInstance.getCriteria();
 
-        const countData = await this.entityUser.count({where: criteria});
-        const bodyData = await this.entityUser.findAll({
-            attributes: {
-             exclude: [
-                'password',
-                'createdAt',
-                'updatedAt'
-             ]
-            },
+        const countData = await this.entityProduct.count({where: criteria});
+        const bodyData = await this.entityProduct.findAll({
+            attributes: {exclude: ['password']},
             where: criteria,
+            include: this.entityProductImage,
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
-            include: [{
-                attributes: {
-                    exclude: [
-                        'createdAt',
-                        'updatedAt'
-                    ],
-                },
-                model: this.userProduct,
-                include: [{
-                    attributes: {
-                        exclude: [
-                            'createdAt',
-                            'updatedAt'
-                        ],
-                    },
-                    model: this.product,
-                    include: [{
-                        model: this.productImages
-                    }]
-                }]
-            }],
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
         });
 
@@ -79,23 +59,28 @@ class User
      */
     async create(data)
     {
-        let salt = bcrypt.genSaltSync(10);
+        let validatorContent = this.validator
+            .setData(data)
+            .hasContent(this.baseFields);
 
-        if (!this.validator.validate(data) || !data.password) {
+        if (!validatorContent) {
             throw new Error(this.validator.error);
         }
 
         try {
-            const valuesUser = {
-                'name': data.name,
-                'email': data.email,
-                'phone': data.phone,
-                'login': data.login,
-                'password': bcrypt.hashSync(data.password, salt),
-                'enabled': true
+            const valuesProduct = {
+                "name": data.name,
+                "description": data.description,
+                "code": data.code,
+                "active": data.active,
+                "price": data.price,
+                "slug_url": data.slug_url,
+                "sku": data.sku,
+                "qty": data.qty,
+                "productImages": data.product_images
             };
 
-            return await this.entityUser.create(valuesUser);
+            return await this.entityProduct.create(valuesProduct,{include: [this.entityProductImage]});
         } catch (e) {
             return e.message;
         }
@@ -107,13 +92,13 @@ class User
      * @param id
      * @returns {Promise<void>}
      */
-    async findUserById(id)
+    async findProductById(id)
     {
-        const data = await this.entityUser.findAll({
+        const data = await this.entityProduct.findAll({
             where: {
                 id: id
             },
-            raw: true
+            include: this.entityProductImage
         });
 
         if (data.length === 0) {
@@ -132,11 +117,11 @@ class User
      */
     async update(data, id)
     {
-        if (!await this.validator.validateRequestUpdate(data, id)) {
+        if (!id) {
             throw new Error(this.validator.error);
         }
 
-       return await this.entityUser.update(data, {
+       return await this.entityProduct.update(data, {
             where: {
                 id: {
                     [Op.eq]: id
@@ -146,21 +131,20 @@ class User
     }
 
     /**
-     * Remove an user in postgres
+     * Remove an product in postgres
      *
      * @param id
      * @returns {Promise<*>}
      */
     async delete(id)
     {
-        let response = await this.entityUser.destroy({
+        let response = await this.entityProduct.destroy({
             where: {
                 id: {
                     [Op.eq]: id
                 }
             }
         });
-
 
         if (!response) {
             throw new Error("Unable to delete.");
@@ -170,4 +154,4 @@ class User
     }
 }
 
-module.exports = User;
+module.exports = Product;

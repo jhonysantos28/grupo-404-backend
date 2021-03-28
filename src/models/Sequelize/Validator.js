@@ -1,6 +1,5 @@
 class Validator {
     constructor(data) {
-        this.data = data;
         this.messageHasContent = " is required";
     }
      hasContent(fields) {
@@ -11,6 +10,14 @@ class Validator {
                 throw new Error(value+defaultMessage);
             }
         });
+
+        return true;
+    }
+
+    setData(data) {
+        this.data = data;
+
+        return this;
     }
 }
 
