@@ -1,7 +1,6 @@
 const Response    = require('./Response');
 const validator   = require('./Sequelize/Validator');
 const filter      = require('./Sequelize/Filter');
-const bcrypt      = require('bcrypt');
 
 const entities = require('./Entities');
 const Sequelize = require('sequelize');
@@ -13,6 +12,15 @@ class Product
         this.validator = new validator();
         this.entityProduct = entities.product;
         this.entityProductImage = entities.productImages;
+        this.baseFields = [
+            "id",
+            "description",
+            "code",
+            "active",
+            "price",
+            "qty",
+            "product_images"
+        ];
     }
 
     /**
@@ -53,15 +61,7 @@ class Product
     {
         let validatorContent = this.validator
             .setData(data)
-            .hasContent([
-                "name",
-                "description",
-                "code",
-                "active",
-                "price",
-                "qty",
-                "product_images"
-            ]);
+            .hasContent(this.baseFields);
 
         if (!validatorContent) {
             throw new Error(this.validator.error);
@@ -80,7 +80,7 @@ class Product
                 "productImages": data.product_images
             };
 
-            return await this.entityProduct.create(valuesProduct,{include: [entities.productImages]});
+            return await this.entityProduct.create(valuesProduct,{include: [this.entityProductImage]});
         } catch (e) {
             return e.message;
         }
@@ -98,7 +98,7 @@ class Product
             where: {
                 id: id
             },
-            include: entities.productImages
+            include: this.entityProductImage
         });
 
         if (data.length === 0) {
@@ -117,7 +117,7 @@ class Product
      */
     async update(data, id)
     {
-        if (!await this.validator.validateRequestUpdate(data, id)) {
+        if (!id) {
             throw new Error(this.validator.error);
         }
 
