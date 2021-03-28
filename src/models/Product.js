@@ -12,6 +12,7 @@ class Product
     constructor() {
         this.validator = new validator();
         this.entityProduct = entities.product;
+        this.entityProductImage = entities.productImages;
     }
 
     /**
@@ -30,7 +31,7 @@ class Product
         const bodyData = await this.entityProduct.findAll({
             attributes: {exclude: ['password']},
             where: criteria,
-            include: entities.productImages,
+            include: this.entityProductImage,
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
@@ -50,24 +51,36 @@ class Product
      */
     async create(data)
     {
-        // add criptografia na senha
-        let salt = bcrypt.genSaltSync(10);
+        let validatorContent = this.validator
+            .setData(data)
+            .hasContent([
+                "name",
+                "description",
+                "code",
+                "active",
+                "price",
+                "qty",
+                "product_images"
+            ]);
 
-        if (!this.validator.validate(data) || !data.password) {
+        if (!validatorContent) {
             throw new Error(this.validator.error);
         }
 
         try {
             const valuesProduct = {
-                'name': data.name,
-                'email': data.email,
-                'phone': data.phone,
-                'login': data.login,
-                'password': bcrypt.hashSync(data.password, salt),
-                'enabled': true
+                "name": data.name,
+                "description": data.description,
+                "code": data.code,
+                "active": data.active,
+                "price": data.price,
+                "slug_url": data.slug_url,
+                "sku": data.sku,
+                "qty": data.qty,
+                "productImages": data.product_images
             };
 
-            return await this.entityProduct.create(valuesProduct);
+            return await this.entityProduct.create(valuesProduct,{include: [entities.productImages]});
         } catch (e) {
             return e.message;
         }
@@ -132,7 +145,6 @@ class Product
                 }
             }
         });
-
 
         if (!response) {
             throw new Error("Unable to delete.");

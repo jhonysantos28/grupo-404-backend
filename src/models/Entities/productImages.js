@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     product_id: DataTypes.INTEGER,
     path: DataTypes.STRING
   }, {
-    timestamps: false,
     tableName: 'product_images'
   });
   productImages.associate = (models) => {

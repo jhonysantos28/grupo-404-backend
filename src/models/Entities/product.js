@@ -8,9 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DECIMAL,
     slug_url: DataTypes.STRING,
     sku: DataTypes.STRING,
-    qty: DataTypes.INTEGER,
-    createdAt: DataTypes.DATE,
-    updatedAt: DataTypes.DATE
+    qty: DataTypes.INTEGER
   },
    {
       indexes: [
