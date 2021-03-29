@@ -13,7 +13,6 @@ class Product
         this.entityProduct = entities.product;
         this.entityProductImage = entities.productImages;
         this.baseFields = [
-            "id",
             "description",
             "code",
             "active",
