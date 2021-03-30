@@ -12,6 +12,7 @@ class Product
         this.validator = new validator();
         this.entityProduct = entities.product;
         this.entityProductImage = entities.productImages;
+        this.entityUser = entities.user;
         this.baseFields = [
             "description",
             "code",
@@ -76,7 +77,8 @@ class Product
                 "slug_url": data.slug_url,
                 "sku": data.sku,
                 "qty": data.qty,
-                "productImages": data.product_images
+                "productImages": data.product_images,
+                "user_id": data.user_id
             };
 
             return await this.entityProduct.create(valuesProduct,{include: [this.entityProductImage]});

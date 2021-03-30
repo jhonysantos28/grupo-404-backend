@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DECIMAL,
     slug_url: DataTypes.STRING,
     sku: DataTypes.STRING,
-    qty: DataTypes.INTEGER
+    qty: DataTypes.INTEGER,
+    user_id: DataTypes.INTEGER
   },
    {
       indexes: [
@@ -23,9 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       sourceKey: 'id',
       foreignKey: 'product_id'
     });
-    product.hasMany(models.userProduct, {
-      sourceKey: 'id',
-      foreignKey: 'product_id'
+    product.belongsTo(models.user, {
+      foreignKey: 'user_id',
+      targetKey: 'id'
     });
   };
 

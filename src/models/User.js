@@ -12,7 +12,6 @@ class User
     constructor() {
         this.validator = new validator();
         this.entityUser = entities.user;
-        this.userProduct = entities.userProduct;
         this.product = entities.product;
         this.productImages = entities.productImages;
     }
@@ -48,18 +47,9 @@ class User
                         'updatedAt'
                     ],
                 },
-                model: this.userProduct,
+                model: this.product,
                 include: [{
-                    attributes: {
-                        exclude: [
-                            'createdAt',
-                            'updatedAt'
-                        ],
-                    },
-                    model: this.product,
-                    include: [{
-                        model: this.productImages
-                    }]
+                    model: this.productImages
                 }]
             }],
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
@@ -87,12 +77,12 @@ class User
 
         try {
             const valuesUser = {
-                'name': data.name,
-                'email': data.email,
-                'phone': data.phone,
-                'login': data.login,
-                'password': bcrypt.hashSync(data.password, salt),
-                'enabled': true
+                "name": data.name,
+                "email": data.email,
+                "phone": data.phone,
+                "login": data.login,
+                "password": bcrypt.hashSync(data.password, salt),
+                "enabled": true
             };
 
             return await this.entityUser.create(valuesUser);

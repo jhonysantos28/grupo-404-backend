@@ -57,7 +57,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"taynerjhony@hotmail.com\",\n\t\"phone\": \"11986005601\",\n\t\"login\": \"taynerjhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
+							"raw": "{\n\t\"name\":  \"Tayner\",\n\t\"email\": \"tayneewqeqdwhosny@hotmail.com\",\n\t\"phone\": \"119860ewdssq05601\",\n\t\"login\": \"taynerjwdqhpny\",\n\t\"password\": \"taynerjhony\",\n\t\"enabled\": 1\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -242,7 +242,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"product_images\": [\n        {\n            \"path\": \"path para a imagem1\"\n        },\n        {\n            \"path\": \"path para a imagem2\"\n        }\n    ]\n}",
+							"raw": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"user_id\": 8,\n    \"product_images\": [\n        {\n            \"path\": \"path para a imagem1\"\n        },\n        {\n            \"path\": \"path para a imagem2\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
