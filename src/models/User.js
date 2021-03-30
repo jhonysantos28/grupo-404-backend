@@ -103,7 +103,18 @@ class User
             where: {
                 id: id
             },
-            raw: true
+            include: [{
+                attributes: {
+                    exclude: [
+                        'createdAt',
+                        'updatedAt'
+                    ],
+                },
+                model: this.product,
+                include: [{
+                    model: this.productImages
+                }]
+            }],
         });
 
         if (data.length === 0) {
