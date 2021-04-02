@@ -42,16 +42,13 @@ class User
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
             include: [{
+                all: true,
                 attributes: {
                     exclude: [
                         'createdAt',
                         'updatedAt'
                     ],
-                },
-                model: this.product,
-                include: [{
-                    model: this.productImages
-                }]
+                }
             }],
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
         });
@@ -110,16 +107,13 @@ class User
                 id: id
             },
             include: [{
+                all: true,
                 attributes: {
                     exclude: [
                         'createdAt',
                         'updatedAt'
                     ],
-                },
-                model: this.product,
-                include: [{
-                    model: this.productImages
-                }]
+                }
             }],
         });
 

@@ -50,7 +50,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }).then(() => {
+      queryInterface.addIndex('user_address', ['type_name'], {
+        unique: true
+      })
+    })
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('user_address');
