@@ -14,6 +14,7 @@ class User
         this.entityUser = entities.user;
         this.product = entities.product;
         this.productImages = entities.productImages;
+        this.entityUserAddress = entities.userAddress;
     }
 
     /**
@@ -82,10 +83,15 @@ class User
                 "phone": data.phone,
                 "login": data.login,
                 "password": bcrypt.hashSync(data.password, salt),
-                "enabled": true
+                "enabled": true,
+                "user_address": data.user_address
             };
 
-            return await this.entityUser.create(valuesUser);
+            return await this.entityUser.create(valuesUser,{include: [{
+                model: this.entityUserAddress,
+                   as: 'user_address'
+                }]
+            });
         } catch (e) {
             return e.message;
         }
