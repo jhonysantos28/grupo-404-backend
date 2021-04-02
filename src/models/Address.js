@@ -87,7 +87,7 @@ class Address
     }
 
     /**
-     * Remove an product in postgres
+     * Remove an Address in postgres
      *
      * @param id
      * @returns {Promise<*>}

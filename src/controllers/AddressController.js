@@ -2,7 +2,7 @@ const output = require('../models/Output');
 const Address = require('../models/Address');
 
 /**
- * Insert an user
+ * Insert an user Address
  *
  * @param req
  * @param res
