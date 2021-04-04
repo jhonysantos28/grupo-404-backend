@@ -31,9 +31,10 @@ module.exports = {
           type: Sequelize.DATE
         }
       }).then(() => {
-        return queryInterface.addConstraint('product_images', ['product_id','path'], {
-          type: 'unique',
-          name: 'product_path_constraint'
+         queryInterface.addConstraint('product_images', {
+           fields: ['product_id','path'],
+           type: 'unique',
+           name: 'product_path_constraint'
         })
       })
   ]);
