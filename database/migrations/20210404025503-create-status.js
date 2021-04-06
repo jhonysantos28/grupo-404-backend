@@ -28,9 +28,9 @@ module.exports = {
         type: 'unique',
         name: 'name_code_constraint'
       })
-    });;
+    });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Statuses');
+    await queryInterface.dropTable('status');
   }
 };

@@ -15,5 +15,6 @@ app.use('/api-docs', require('./routes/Docs'));
 app.use('/healthcheck/', require('./routes/System'));
 app.use('/user/', require('./routes/User'));
 app.use('/product/', require('./routes/Product'));
+app.use('/order/', require('./routes/SalesOrder'));
 
 module.exports = app;

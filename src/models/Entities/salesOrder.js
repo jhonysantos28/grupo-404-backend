@@ -17,13 +17,13 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'status_id',
         targetKey: 'id'
       });
-      status.hasMany(models.salesOrderProducts, {
+      salesOrder.hasMany(models.salesOrderProducts, {
         sourceKey: 'id',
         foreignKey: 'order_id',
-        as: 'order_products'
+        as: 'products'
       });
     }
-  };
+  }
   salesOrder.init({
     user_id: DataTypes.INTEGER,
     user_address_id: DataTypes.INTEGER,
@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'salesOrder',
+    tableName: 'sales_order'
   });
   return salesOrder;
 };
