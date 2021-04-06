@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         as: 'user_status'
       });
     }
-  };
+  }
   status.init({
     name: DataTypes.STRING,
     code: DataTypes.STRING

@@ -1,17 +1,16 @@
-const Response    = require('./Response');
-const validator   = require('./Sequelize/Validator');
-const filter      = require('./Sequelize/Filter');
+const Response = require('./Response');
+const validator = require('./Sequelize/Validator');
+const filter = require('./Sequelize/Filter');
 
 const entities = require('./Entities');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-class SalesOrder
-{
+class SalesOrder {
     constructor() {
         this.validator = new validator();
-        this.entityProduct = entities.product;
         this.entityUser = entities.user;
+        this.entityStatus = entities.status;
         this.entitySalesOrder = entities.salesOrder;
         this.entitySalesOrderProducts = entities.salesOrderProducts;
         this.baseFields = [
@@ -27,20 +26,44 @@ class SalesOrder
      * @param data
      * @returns {Promise<*>}
      */
-    async getCollection(data)
-    {
+    async getCollection(data) {
         const filterInstance = new filter(data);
-        const response       = new Response();
-        const criteria       = await filterInstance.getCriteria();
+        const response = new Response();
+        const criteria = await filterInstance.getCriteria();
 
         const countData = await this.entitySalesOrder.count({where: criteria});
         const bodyData = await this.entitySalesOrder.findAll({
             where: criteria,
-            include: [{
-                attributes: {exclude: ['order_id']},
-                model: this.entitySalesOrderProducts,
-                as: 'products'
-            }],
+            attributes: {
+                exclude: [
+                    'createdAt',
+                    'updatedAt',
+                    'status_id'
+                ]
+            },
+            include: [
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityStatus
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'order_id',
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entitySalesOrderProducts,
+                    as: 'products'
+                }
+            ],
+
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
@@ -58,8 +81,7 @@ class SalesOrder
      * @param data
      * @returns {Promise<*>}
      */
-    async create(data)
-    {
+    async create(data) {
         let validatorContent = this.validator
             .setData(data)
             .hasContent(this.baseFields);
@@ -70,7 +92,8 @@ class SalesOrder
 
         try {
 
-            return await this.entitySalesOrder.create(data,{include: [{
+            return await this.entitySalesOrder.create(data, {
+                include: [{
                     model: this.entitySalesOrderProducts,
                     as: 'products'
                 }]
@@ -78,6 +101,31 @@ class SalesOrder
         } catch (e) {
             return e.message;
         }
+    }
+
+    /**
+     * Find by id
+     *
+     * @param id
+     * @returns {Promise<void>}
+     */
+    async findById(id) {
+        const data = await this.entitySalesOrder.findAll({
+            where: {
+                id: id
+            },
+            include: [{
+                attributes: {exclude: ['order_id']},
+                model: this.entitySalesOrderProducts,
+                as: 'products'
+            }],
+        });
+
+        if (data.length === 0) {
+            throw new Error("Not found");
+        }
+
+        return data;
     }
 }
 

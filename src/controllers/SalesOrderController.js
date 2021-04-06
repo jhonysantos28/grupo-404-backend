@@ -62,7 +62,7 @@ exports.get = async (req, res) => {
             throw new Error("Required param (ID)");
         }
         const salesOrderModel = new salesOrder();
-        const data = await salesOrderModel.findProductById(id);
+        const data = await salesOrderModel.findById(id);
 
         return output.responseJson(true, data, res, 200);
     } catch (err) {
