@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b483c376-3e73-4927-a0d7-ebe757187d65",
+		"_postman_id": "c9eb5fdf-9e71-46f4-8986-4bca5ae393a5",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -21,6 +21,43 @@
 							"port": "2000",
 							"path": [
 								"user"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "taynerjhony@hotmail.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Tayner",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Teste",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET]User Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/user/44/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"44",
+								"orders"
 							],
 							"query": [
 								{
@@ -287,51 +324,6 @@
 			"name": "Products",
 			"item": [
 				{
-					"name": "[GET] Product Collection",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:2000/product",
-							"host": [
-								"localhost"
-							],
-							"port": "2000",
-							"path": [
-								"product"
-							],
-							"query": [
-								{
-									"key": "slug_url",
-									"value": "Teste",
-									"disabled": true
-								},
-								{
-									"key": "name",
-									"value": "Teste",
-									"disabled": true
-								},
-								{
-									"key": "qty",
-									"value": "10",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "2",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "[POST]Product Create",
 					"request": {
 						"method": "POST",
@@ -400,6 +392,171 @@
 							"path": [
 								"product",
 								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Product Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/product",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Product Detail by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/product/33",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product",
+								"33"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sales Order",
+			"item": [
+				{
+					"name": "[POST]Order Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 43,\n    \"status_id\": 1,\n    \"user_address_id\": 5,\n    \"total\": 150.00,\n    \"products\": [\n        {\n            \"product_id\": 30,\n            \"qty\": 1\n        },\n         {\n            \"product_id\": 33,\n            \"qty\": 1\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/order",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Order Collection",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/order",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"order"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Order Detail by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:2000/order/5",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"order",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[PUT] Order Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status_id\": 1,\n    \"user_address_id\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/order/5",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"order",
+								"5"
 							]
 						}
 					},
