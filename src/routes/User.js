@@ -3,6 +3,7 @@ const router = express.Router();
 
 const userController = require('../controllers/UserController');
 const userAddressController = require('../controllers/AddressController');
+const salesOrderController = require('../controllers/SalesOrderController');
 
 //Routers to user
 router.get('/', userController.getCollection)
@@ -16,5 +17,8 @@ router.delete('/:id', userController.deleteUser);
 router.post('/address', userAddressController.insert);
 router.put('/address/:id', userAddressController.update);
 router.delete('/address/:id', userAddressController.delete);
+
+//Router to user Orders
+router.get('/:id/orders', salesOrderController.getUserOrders);
 
 module.exports = router;

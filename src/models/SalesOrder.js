@@ -154,6 +154,31 @@ class SalesOrder {
             }
         });
     }
+
+    /**
+     * Get User Orders
+     *
+     * @param id
+     * @returns {Promise<void>}
+     */
+    async getUserOrders(id) {
+        const data = await this.entitySalesOrder.findAll({
+            where: {
+                user_id: id
+            },
+            include: [{
+                attributes: {exclude: ['order_id']},
+                model: this.entitySalesOrderProducts,
+                as: 'products'
+            }],
+        });
+
+        if (data.length === 0) {
+            throw new Error("Not found");
+        }
+
+        return data;
+    }
 }
 
 module.exports = SalesOrder;

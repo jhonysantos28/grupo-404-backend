@@ -88,3 +88,23 @@ exports.update = async (req, res) => {
         return output.responseError(err, res, 400);
     }
 };
+
+/**
+ * Get orders to user
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+exports.getUserOrders = async (req, res) => {
+    try {
+        const salesOrderModel = new salesOrder();
+        const id = req.params.id;
+        const data = await salesOrderModel.getUserOrders(id);
+
+        return output.responseJson(true, data, res, 200);
+    } catch (err) {
+        return output.responseError(err, res, 400);
+    }
+};
+
