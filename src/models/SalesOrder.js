@@ -127,6 +127,33 @@ class SalesOrder {
 
         return data;
     }
+
+    /**
+     * Update a data
+     *
+     * @param data
+     * @param id
+     * @returns {Promise<*>}
+     */
+    async update(data, id)
+    {
+        if (!id) {
+            throw new Error(this.validator.error);
+        }
+
+        let dataValues = {
+            status_id: data.status_id,
+            user_address_id: data.user_address_id
+        };
+
+        return await this.entitySalesOrder.update(dataValues, {
+            where: {
+                id: {
+                    [Op.eq]: id
+                }
+            }
+        });
+    }
 }
 
 module.exports = SalesOrder;

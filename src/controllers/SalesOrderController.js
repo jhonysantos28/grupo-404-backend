@@ -77,7 +77,7 @@ exports.get = async (req, res) => {
  * @param res
  * @returns {Promise<void>}
  */
-exports.updateStatus = async (req, res) => {
+exports.update = async (req, res) => {
     try {
         const salesOrderModel = new salesOrder();
         const id = req.params.id;
