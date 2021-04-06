@@ -37,7 +37,8 @@ module.exports = {
         type: Sequelize.DATE
       }
     }).then(() => {
-          queryInterface.addConstraint('user_product', ['user_id','product_id'], {
+          queryInterface.addConstraint('user_product', {
+            fields: ['user_id','product_id'],
             type: 'unique',
             name: 'user_product_constraint'
           })
