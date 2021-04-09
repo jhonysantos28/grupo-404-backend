@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9eb5fdf-9e71-46f4-8986-4bca5ae393a5",
+		"_postman_id": "cc4b462b-114f-4171-9dce-0a84b4db69a7",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -345,6 +345,45 @@
 							"port": "2000",
 							"path": [
 								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[POST]Upload Product Images",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fotos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/download.png"
+								},
+								{
+									"key": "fotos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/downloadsss.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2000/product/upload",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"product",
+								"upload"
 							]
 						}
 					},

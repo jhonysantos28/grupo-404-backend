@@ -7,6 +7,8 @@ const cors    = require('cors');
 
 app.use(cors());
 
+// Rota publica para imagens carregadas
+app.use(express.static('uploads'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
