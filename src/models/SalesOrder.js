@@ -11,6 +11,7 @@ class SalesOrder {
         this.validator = new validator();
         this.entityUser = entities.user;
         this.entityStatus = entities.status;
+        this.entityProduct = entities.product;
         this.entitySalesOrder = entities.salesOrder;
         this.entitySalesOrderProducts = entities.salesOrderProducts;
         this.baseFields = [
@@ -167,9 +168,13 @@ class SalesOrder {
                 user_id: id
             },
             include: [{
-                attributes: {exclude: ['order_id']},
+                attributes: {exclude: ['order_id', 'createdAt', 'updatedAt']},
                 model: this.entitySalesOrderProducts,
-                as: 'products'
+                as: 'products',
+                include: [{
+                    attributes: {exclude: ['id', 'qty', 'createdAt', 'updatedAt']},
+                    model:this.entityProduct
+                }]
             }],
         });
 
