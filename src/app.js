@@ -12,6 +12,7 @@ app.use(express.static('uploads'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api-docs', require('./routes/Docs'));
 app.use('/healthcheck/', require('./routes/System'));

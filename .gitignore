@@ -10,6 +10,7 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 JetBrains.Dockerfile
+uploads/
 
 # Runtime data
 pids

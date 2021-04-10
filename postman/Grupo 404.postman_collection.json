@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cc4b462b-114f-4171-9dce-0a84b4db69a7",
+		"_postman_id": "b2d2cdff-9071-41ec-a26f-0e6d9b27afaf",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -329,8 +329,20 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"user_id\": 43,\n    \"product_images\": [\n        {\n            \"path\": \"path para a imagem1\"\n        },\n        {\n            \"path\": \"path para a imagem2\"\n        }\n    ]\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "fotos",
+									"type": "file",
+									"src": "/home/tayner/Desktop/Fotos macbook/D_NQ_NP_2X_876563-MLB44342458558_122020-F.jpg"
+								},
+								{
+									"key": "fields_data",
+									"value": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"user_id\": 43\n}",
+									"contentType": "",
+									"type": "text"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -345,45 +357,6 @@
 							"port": "2000",
 							"path": [
 								"product"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "[POST]Upload Product Images",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "fotos",
-									"type": "file",
-									"src": "/C:/Users/edison.junior/Desktop/Pessoal/download.png"
-								},
-								{
-									"key": "fotos",
-									"type": "file",
-									"src": "/C:/Users/edison.junior/Desktop/Pessoal/downloadsss.jpg"
-								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "localhost:2000/product/upload",
-							"host": [
-								"localhost"
-							],
-							"port": "2000",
-							"path": [
-								"product",
-								"upload"
 							]
 						}
 					},

@@ -31,7 +31,7 @@ exports.insertProduct = async (req, res) => {
             throw new Error("Raw body is required");
         }
         const productModel = new product();
-        let data = await productModel.create(req.body);
+        let data = await productModel.create(req);
 
         let msg = 'Insert product';
         let status = true;
@@ -110,26 +110,3 @@ exports.deleteProduct = async (req, res) => {
         return output.responseError(err, res, 400);
     }
 };
-
-/**
- * Upload image to a product
- *
- * @param req
- * @param res
- * @returns {Promise<void>}
- */
-exports.upload = async (req, res) => {
-    if (req.files === undefined) {
-        return output.responseError("Nenhum arquivo enviado", res, 400);
-    }
-
-    const product_images = [];
-
-    req.files.forEach(file => {
-        product_images.push({ path: file.path.replace('uploads/', '') });
-    });
-
-    return output.responseJson(true, { 
-        product_images
-    }, res, 201);
-}
