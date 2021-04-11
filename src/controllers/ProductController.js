@@ -31,11 +31,12 @@ exports.insertProduct = async (req, res) => {
             throw new Error("Raw body is required");
         }
         const productModel = new product();
-        let data = await productModel.create(req);
+        const data = await productModel.create(req);
 
         let msg = 'Insert product';
         let status = true;
         let statusCode = 200;
+
         if (!data.hasOwnProperty('dataValues')) {
              msg = 'Fail to Insert product';
              status = false;

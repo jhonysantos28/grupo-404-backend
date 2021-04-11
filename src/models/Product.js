@@ -69,9 +69,17 @@ class Product
         }
 
         try {
-            dataBody.productImages = data.files;
+            const images = [];
 
-            return await this.entityProduct.create(dataBody,{include: [this.entityProductImage]});
+            data.files.forEach(file => {
+                images.push({
+                    path: file.path.replace('uploads/', '')
+                });
+            });
+
+            dataBody.productImages = images;
+
+            return await this.entityProduct.create(dataBody, {include: [this.entityProductImage]});
         } catch (e) {
             return e.message;
         }

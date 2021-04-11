@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b2d2cdff-9071-41ec-a26f-0e6d9b27afaf",
+		"_postman_id": "7f891bf9-88bd-4eff-b193-c83db61c541b",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -332,23 +332,18 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "photos",
-									"type": "file",
-									"src": "/home/tayner/Desktop/bg.jpg"
-								},
-								{
 									"key": "name",
-									"value": "Produto Teste 2",
+									"value": "Produto Teste 7",
 									"type": "text"
 								},
 								{
 									"key": "description",
-									"value": "Produto Teste222",
+									"value": "Teste 1234567589",
 									"type": "text"
 								},
 								{
 									"key": "code",
-									"value": "234234",
+									"value": "23423456713",
 									"type": "text"
 								},
 								{
@@ -363,12 +358,12 @@
 								},
 								{
 									"key": "slug_url",
-									"value": "3teretrter-tertertre",
+									"value": "3teretrter-tertertre3713",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": "4535543",
+									"value": "45355431713",
 									"type": "text"
 								},
 								{
@@ -378,8 +373,18 @@
 								},
 								{
 									"key": "user_id",
-									"value": "43",
+									"value": "1",
 									"type": "text"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/download.png"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/downloadsss.jpg"
 								}
 							],
 							"options": {
