@@ -59,10 +59,9 @@ class Product
     async create(data)
     {
         let dataBody = data.body;
-        let fieldsDataDecode = JSON.parse(dataBody.fields_data);
 
         let validatorContent = this.validator
-            .setData(fieldsDataDecode)
+            .setData(dataBody)
             .hasContent(this.baseFields);
 
         if (!validatorContent) {
@@ -70,9 +69,9 @@ class Product
         }
 
         try {
-            fieldsDataDecode.productImages = data.files;
+            dataBody.productImages = data.files;
 
-            return await this.entityProduct.create(fieldsDataDecode,{include: [this.entityProductImage]});
+            return await this.entityProduct.create(dataBody,{include: [this.entityProductImage]});
         } catch (e) {
             return e.message;
         }

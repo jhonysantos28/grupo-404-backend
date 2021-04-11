@@ -332,14 +332,53 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "fotos",
+									"key": "photos",
 									"type": "file",
-									"src": "/home/tayner/Desktop/Fotos macbook/D_NQ_NP_2X_876563-MLB44342458558_122020-F.jpg"
+									"src": "/home/tayner/Desktop/bg.jpg"
 								},
 								{
-									"key": "fields_data",
-									"value": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"user_id\": 43\n}",
-									"contentType": "",
+									"key": "name",
+									"value": "Produto Teste 2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Produto Teste222",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "234234",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "11.50",
+									"type": "text"
+								},
+								{
+									"key": "slug_url",
+									"value": "3teretrter-tertertre",
+									"type": "text"
+								},
+								{
+									"key": "sku",
+									"value": "4535543",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "43",
 									"type": "text"
 								}
 							],
