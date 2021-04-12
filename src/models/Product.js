@@ -18,8 +18,7 @@ class Product
             "code",
             "active",
             "price",
-            "qty",
-            "product_images"
+            "qty"
         ];
     }
 
@@ -59,8 +58,10 @@ class Product
      */
     async create(data)
     {
+        let dataBody = data.body;
+
         let validatorContent = this.validator
-            .setData(data)
+            .setData(dataBody)
             .hasContent(this.baseFields);
 
         if (!validatorContent) {
@@ -68,20 +69,17 @@ class Product
         }
 
         try {
-            const valuesProduct = {
-                "name": data.name,
-                "description": data.description,
-                "code": data.code,
-                "active": data.active,
-                "price": data.price,
-                "slug_url": data.slug_url,
-                "sku": data.sku,
-                "qty": data.qty,
-                "productImages": data.product_images,
-                "user_id": data.user_id
-            };
+            const images = [];
 
-            return await this.entityProduct.create(valuesProduct,{include: [this.entityProductImage]});
+            data.files.forEach(file => {
+                images.push({
+                    path: file.path.replace('uploads/', '')
+                });
+            });
+
+            dataBody.productImages = images;
+
+            return await this.entityProduct.create(dataBody, {include: [this.entityProductImage]});
         } catch (e) {
             return e.message;
         }

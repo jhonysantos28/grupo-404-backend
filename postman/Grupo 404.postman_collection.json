@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9eb5fdf-9e71-46f4-8986-4bca5ae393a5",
+		"_postman_id": "7f891bf9-88bd-4eff-b193-c83db61c541b",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -329,8 +329,64 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Produto Teste 2\",\n    \"description\": \"Produto Teste222\",\n    \"code\": \"wrrreer222\",\n    \"active\": true,\n    \"price\": \"11.50\",\n    \"slug_url\": \"Produto Teste2121\",\n    \"sku\": \"4342312332\",\n    \"qty\": 11,\n    \"user_id\": 43,\n    \"product_images\": [\n        {\n            \"path\": \"path para a imagem1\"\n        },\n        {\n            \"path\": \"path para a imagem2\"\n        }\n    ]\n}",
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Produto Teste 7",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Teste 1234567589",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "23423456713",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "11.50",
+									"type": "text"
+								},
+								{
+									"key": "slug_url",
+									"value": "3teretrter-tertertre3713",
+									"type": "text"
+								},
+								{
+									"key": "sku",
+									"value": "45355431713",
+									"type": "text"
+								},
+								{
+									"key": "qty",
+									"value": "11",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/download.png"
+								},
+								{
+									"key": "photos",
+									"type": "file",
+									"src": "/C:/Users/edison.junior/Desktop/Pessoal/downloadsss.jpg"
+								}
+							],
 							"options": {
 								"raw": {
 									"language": "json"

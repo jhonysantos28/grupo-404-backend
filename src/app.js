@@ -7,9 +7,12 @@ const cors    = require('cors');
 
 app.use(cors());
 
+// Rota publica para imagens carregadas
+app.use(express.static('uploads'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api-docs', require('./routes/Docs'));
 app.use('/healthcheck/', require('./routes/System'));
