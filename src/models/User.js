@@ -42,14 +42,21 @@ class User
             limit: filterInstance.getLimit(),
             order: filterInstance.getSort(),
             include: [{
-                all: true,
+                model: this.product,
                 attributes: {
                     exclude: [
                         'createdAt',
                         'updatedAt'
                     ],
+                },
+                include: [{
+                    model: this.productImages
+                }]},
+                {
+                    model: this.entityUserAddress,
+                    as: 'user_address'
                 }
-            }],
+            ],
             offset: (filterInstance.getPage() === 1) ? 0 : (filterInstance.getPage() - 1) * filterInstance.getLimit()
         });
 
@@ -106,15 +113,27 @@ class User
             where: {
                 id: id
             },
+            attributes: {
+                exclude: [
+                    'password'
+                ]
+            },
             include: [{
-                all: true,
+                model: this.product,
                 attributes: {
                     exclude: [
                         'createdAt',
                         'updatedAt'
                     ],
+                },
+                include: [{
+                    model: this.productImages
+                }]},
+                {
+                    model: this.entityUserAddress,
+                    as: 'user_address'
                 }
-            }],
+            ]
         });
 
         if (data.length === 0) {
