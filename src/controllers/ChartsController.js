@@ -10,34 +10,45 @@ const db = require('../models/Entities/index');
  * @returns {Promise<void>}
  */
 exports.getSixMonthSales = async (req, res) => {
-    try {        
+    try {
+        const mesesLabel = [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro'
+        ];
         
-        
-
         /**
          * TODO: Colocar em model depois
          */
-        db.Sequelize.query
-        const janeiro = await db.sequelize.query(`
+        const totalVendas = await db.sequelize.query(`
             select 
-                'janeiro' as mes, 
-                coalesce(sum(total), 0) as total 
-            from sales_order
-            where "createdAt" between '2021-01-01 00:00:00' and '2021-01-31 23:59:59'
+                EXTRACT(MONTH FROM "createdAt") as mes, 
+                sum(total) as total
+            from sales_order 
+            where "createdAt" between now() - interval '5 month' and now() 
+            group by mes
         `, { type: QueryTypes.SELECT });
 
-        console.log(janeiro);
+        const mesesValue = totalVendas.map(row => {
+            return mesesLabel[row.mes - 1];
+        });
+
+        const dataPrice = totalVendas.map(row => {
+            return row.total;
+        });
 
         const data = {
-            meses: [
-              'Janeiro',
-              'Fevereiro',
-              'Março',
-              'Abril',
-              'Maio',
-              'Junho',
-            ],
-            data: [234.33, 113.33, 678.33, 567.33, 123.55, 33.86]
+            meses: mesesValue,
+            data: dataPrice
         }
 
         return output.responseJson(true, data, res, 200);
