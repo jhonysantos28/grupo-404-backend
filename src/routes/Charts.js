@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const chartsOrderController = require('../controllers/ChartsController');
+const util = require('../helper/Util');
 
-router.get('/', chartsOrderController.getSixMonthSales);
+router.get('/', util.verifyJWT, chartsOrderController.getSixMonthSales);
 
 module.exports = router;

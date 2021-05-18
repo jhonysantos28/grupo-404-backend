@@ -1,5 +1,6 @@
 const entities    = require('./Entities');
 const bcrypt      = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class Login
 {
@@ -33,6 +34,9 @@ class Login
                 dataReturn.id = userDataBase.id;
                 dataReturn.email = userDataBase.email;
                 dataReturn.name = userDataBase.name;
+                dataReturn.token = jwt.sign({id:dataReturn.id}, process.env.SECRET, {
+                    expiresIn: '60 days'
+                });
             }
 
             return dataReturn;
