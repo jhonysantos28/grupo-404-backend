@@ -8,7 +8,7 @@ const util = require('../helper/Util');
 
 //Routers to user
 router.get('/', util.verifyJWT, userController.getCollection)
-router.post('/', util.verifyJWT, userController.insertUser);
+router.post('/', userController.insertUser);
 router.post('/login', userController.login);
 router.get('/:id', util.verifyJWT, userController.getUser);
 router.put('/:id', util.verifyJWT, userController.updateUser);

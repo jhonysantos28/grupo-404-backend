@@ -16,9 +16,9 @@ const upload = multer({ storage });
 
 const productController = require('../controllers/ProductController');
 
-router.get('/', util.verifyJWT, productController.getCollection);
+router.get('/', productController.getCollection);
 router.post('/', util.verifyJWT, upload.array('photos', 8),productController.insertProduct);
-router.get('/:id', util.verifyJWT, productController.getProduct);
+router.get('/:id', productController.getProduct);
 router.put('/:id', util.verifyJWT, productController.updateProduct);
 router.delete('/:id', util.verifyJWT, productController.deleteProduct);
 
