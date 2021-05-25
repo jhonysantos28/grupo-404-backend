@@ -1,16 +1,5 @@
 version: '3'
 services:
-  db:
-    image: 'postgres'
-    container_name: postgres_db
-    ports:
-      - '5432:5432'
-    volumes:
-      - ~/projects/backend/data/db:/data/db
-    environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
   app:
     build: .
     ports:
@@ -19,8 +8,4 @@ services:
     volumes:
       - ~/projects/backend:/usr/app/
     environment:
-      PORT: '2000'  
-    depends_on:
-      - db
-    links:
-      - db
+      PORT: '2000'
