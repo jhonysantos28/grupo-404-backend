@@ -16,6 +16,7 @@ class SalesOrder {
         this.entitySalesOrderProducts = entities.salesOrderProducts;
         this.baseFields = [
             "user_id",
+            "user_id_seller",
             "status_id",
             "user_address_id"
         ];
@@ -39,7 +40,8 @@ class SalesOrder {
                 exclude: [
                     'createdAt',
                     'updatedAt',
-                    'status_id'
+                    'status_id',
+                    'user_id_seller'
                 ]
             },
             include: [
@@ -62,7 +64,18 @@ class SalesOrder {
                     },
                     model: this.entitySalesOrderProducts,
                     as: 'products'
-                }
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_seller'
+                },
             ],
 
             limit: filterInstance.getLimit(),

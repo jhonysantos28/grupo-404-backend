@@ -22,13 +22,19 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'order_id',
         as: 'products'
       });
+      salesOrder.belongsTo(models.user, {
+        foreignKey: 'user_id_seller',
+        targetKey: 'id',
+        as: 'user_seller'
+      });
     }
   }
   salesOrder.init({
     user_id: DataTypes.INTEGER,
     user_address_id: DataTypes.INTEGER,
     status_id: DataTypes.INTEGER,
-    total: DataTypes.DECIMAL
+    total: DataTypes.DECIMAL,
+    user_id_seller: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'salesOrder',
