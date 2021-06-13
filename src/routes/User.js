@@ -21,5 +21,6 @@ router.delete('/address/:id', util.verifyJWT, userAddressController.delete);
 
 //Router to user Orders
 router.get('/:id/orders', util.verifyJWT, salesOrderController.getUserOrders);
+router.get('/:id/orders/seller', util.verifyJWT, salesOrderController.getUserOrdersSeller);
 
 module.exports = router;

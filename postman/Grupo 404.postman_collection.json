@@ -75,14 +75,14 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:2000/user/44/orders?",
+							"raw": "localhost:2000/user/3/orders",
 							"host": [
 								"localhost"
 							],
 							"port": "2000",
 							"path": [
 								"user",
-								"44",
+								"3",
 								"orders"
 							],
 							"query": [
@@ -100,10 +100,55 @@
 									"key": "name",
 									"value": "Teste",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET]User Orders Seller By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2000/user/5/orders/seller",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"5",
+								"orders",
+								"seller"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "taynerjhony@hotmail.com",
+									"disabled": true
 								},
 								{
-									"key": "",
-									"value": null
+									"key": "name",
+									"value": "Tayner",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Teste",
+									"disabled": true
 								}
 							]
 						}
@@ -129,7 +174,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":  \"Taynessr1\",\n    \"email\": \"taynearjhony@hotmail.com\",\n    \"phone\": \"11986005601\",\n    \"login\": \"taynerjhosny1\",\n    \"password\": \"12ss3456\",\n    \"enabled\": 1,\n    \"user_address\": [\n        {\n            \"type_name\": \"Trabalho\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        },\n        {\n            \"type_name\": \"Casa\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        }\n    ] \n}",
+							"raw": "{\n    \"name\":  \"Taynessr1\",\n    \"email\": \"taynerjhony+1@hotmail.com\",\n    \"phone\": \"11986005601\",\n    \"login\": \"tayner\",\n    \"password\": \"Q1w2e3r4*\",\n    \"enabled\": 1,\n    \"user_address\": [\n        {\n            \"type_name\": \"Trabalho\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        },\n        {\n            \"type_name\": \"Casa\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        }\n    ] \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -258,7 +303,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\":\"taynearjhony@hotmail.com\",\n\t\"password\":\"12ss3456\"\n}",
+							"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"Q1w2e3r4*\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -412,7 +457,7 @@
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Produto Teste 7",
+									"value": "Produto Teste 8",
 									"type": "text"
 								},
 								{
@@ -422,7 +467,7 @@
 								},
 								{
 									"key": "code",
-									"value": "23423456713",
+									"value": "23423456712w",
 									"type": "text"
 								},
 								{
@@ -437,12 +482,12 @@
 								},
 								{
 									"key": "slug_url",
-									"value": "3teretrter-tertertre3713",
+									"value": "3teretrter-tertertre37",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": "45355431713",
+									"value": "45355431715",
 									"type": "text"
 								},
 								{
@@ -622,7 +667,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 43,\n    \"status_id\": 1,\n    \"user_address_id\": 5,\n    \"total\": 150.00,\n    \"products\": [\n        {\n            \"product_id\": 30,\n            \"qty\": 1\n        },\n         {\n            \"product_id\": 33,\n            \"qty\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"user_id\": 3,\n    \"user_id_seller\": 1,\n    \"status_id\": 1,\n    \"user_address_id\": 4,\n    \"total\": 150.00,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"qty\": 1\n        },\n         {\n            \"product_id\": 5,\n            \"qty\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -654,7 +699,7 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:2000/order?",
+							"raw": "localhost:2000/order",
 							"host": [
 								"localhost"
 							],
@@ -672,10 +717,6 @@
 									"key": "page",
 									"value": "2",
 									"disabled": true
-								},
-								{
-									"key": "",
-									"value": null
 								}
 							]
 						}
