@@ -34,9 +34,13 @@ exports.getSixMonthSales = async (req, res) => {
                 EXTRACT(MONTH FROM "createdAt") as mes, 
                 sum(total) as total
             from sales_order 
-            where "createdAt" between now() - interval '5 month' and now() 
+            where "createdAt" between DATE(now() - interval '5 month') and now()
+            and user_id_seller = :user_id_seller   
             group by mes
-        `, { type: QueryTypes.SELECT });
+        `, {
+            replacements: { user_id_seller: req.body.userId },
+            type: QueryTypes.SELECT 
+        });
 
         const mesesValue = totalVendas.map(row => {
             return mesesLabel[row.mes - 1];
