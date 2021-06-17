@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       });
       salesOrder.belongsTo(models.userAddress, {
         foreignKey: 'user_address_id',
-        targetKey: 'id'
+        targetKey: 'id',
+        as: 'user_address'
       });
       salesOrder.belongsTo(models.status, {
         foreignKey: 'status_id',

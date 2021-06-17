@@ -12,6 +12,7 @@ class SalesOrder {
         this.entityUser = entities.user;
         this.entityStatus = entities.status;
         this.entityProduct = entities.product;
+        this.entityUserAddress = entities.userAddress;
         this.entitySalesOrder = entities.salesOrder;
         this.entitySalesOrderProducts = entities.salesOrderProducts;
         this.baseFields = [
@@ -88,6 +89,16 @@ class SalesOrder {
                     },
                     model: this.entityUser,
                     as: 'user_seller'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
                 },
             ],
 
@@ -225,6 +236,16 @@ class SalesOrder {
                     model: this.entityUser,
                     as: 'user_seller'
                 },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
+                }
             ],
         });
 
@@ -277,6 +298,16 @@ class SalesOrder {
                     model: this.entityUser,
                     as: 'user_seller'
                 },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
+                }
             ],
         });
 
