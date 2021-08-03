@@ -108,3 +108,23 @@ exports.getUserOrders = async (req, res) => {
     }
 };
 
+
+/**
+ * Get orders seller to user
+ *
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
+exports.getUserOrdersSeller = async (req, res) => {
+    try {
+        const salesOrderModel = new salesOrder();
+        const id = req.params.id;
+        const data = await salesOrderModel.getUserOrdersSeller(id);
+
+        return output.responseJson(true, data, res, 200);
+    } catch (err) {
+        return output.responseError(err, res, 400);
+    }
+};
+

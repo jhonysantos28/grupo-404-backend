@@ -12,10 +12,12 @@ class SalesOrder {
         this.entityUser = entities.user;
         this.entityStatus = entities.status;
         this.entityProduct = entities.product;
+        this.entityUserAddress = entities.userAddress;
         this.entitySalesOrder = entities.salesOrder;
         this.entitySalesOrderProducts = entities.salesOrderProducts;
         this.baseFields = [
             "user_id",
+            "user_id_seller",
             "status_id",
             "user_address_id"
         ];
@@ -39,7 +41,8 @@ class SalesOrder {
                 exclude: [
                     'createdAt',
                     'updatedAt',
-                    'status_id'
+                    'status_id',
+                    'user_id_seller'
                 ]
             },
             include: [
@@ -57,12 +60,46 @@ class SalesOrder {
                         exclude: [
                             'order_id',
                             'createdAt',
-                            'updatedAt'
+                            'updatedAt',
+                            'product_id'
                         ]
                     },
                     model: this.entitySalesOrderProducts,
-                    as: 'products'
-                }
+                    as: 'products',
+                    include: this.entityProduct
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_order'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_seller'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
+                },
             ],
 
             limit: filterInstance.getLimit(),
@@ -118,7 +155,8 @@ class SalesOrder {
             include: [{
                 attributes: {exclude: ['order_id']},
                 model: this.entitySalesOrderProducts,
-                as: 'products'
+                as: 'products',
+                include: this.entityProduct
             }],
         });
 
@@ -168,14 +206,109 @@ class SalesOrder {
                 user_id: id
             },
             include: [{
-                attributes: {exclude: ['order_id', 'createdAt', 'updatedAt']},
-                model: this.entitySalesOrderProducts,
-                as: 'products',
-                include: [{
-                    attributes: {exclude: ['id', 'qty', 'createdAt', 'updatedAt']},
-                    model:this.entityProduct
-                }]
-            }],
+                    attributes: {exclude: ['order_id', 'createdAt', 'updatedAt']},
+                    model: this.entitySalesOrderProducts,
+                    as: 'products',
+                    include: [{
+                        attributes: {exclude: ['id', 'qty', 'createdAt', 'updatedAt']},
+                        model:this.entityProduct
+                    }]
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_order'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_seller'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
+                }
+            ],
+        });
+
+        if (data.length === 0) {
+            throw new Error("Not found");
+        }
+
+        return data;
+    }
+
+    /**
+     * Get User Orders
+     *
+     * @param id
+     * @returns {Promise<void>}
+     */
+    async getUserOrdersSeller(id) {
+        const data = await this.entitySalesOrder.findAll({
+            where: {
+                user_id_seller: id
+            },
+            include: [{
+                    attributes: {exclude: ['order_id', 'createdAt', 'updatedAt']},
+                    model: this.entitySalesOrderProducts,
+                    as: 'products',
+                    include: [{
+                        attributes: {exclude: ['id', 'qty', 'createdAt', 'updatedAt']},
+                        model:this.entityProduct
+                    }]
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_order'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt',
+                            'password'
+                        ]
+                    },
+                    model: this.entityUser,
+                    as: 'user_seller'
+                },
+                {
+                    attributes: {
+                        exclude: [
+                            'createdAt',
+                            'updatedAt'
+                        ]
+                    },
+                    model: this.entityUserAddress,
+                    as: 'user_address'
+                }
+            ],
         });
 
         if (data.length === 0) {

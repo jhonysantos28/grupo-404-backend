@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7f891bf9-88bd-4eff-b193-c83db61c541b",
+		"_postman_id": "bc29e94f-4a70-49b1-ac3b-68f11dd7d062",
 		"name": "Grupo 404",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,15 +12,78 @@
 					"name": "[GET]User Collection",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:2000/user",
+							"raw": "localhost:2000/user?",
 							"host": [
 								"localhost"
 							],
 							"port": "2000",
 							"path": [
 								"user"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "taynerjhony@hotmail.com",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Tayner",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Teste",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[GET]User Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2000/user/3/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "2000",
+							"path": [
+								"user",
+								"3",
+								"orders"
 							],
 							"query": [
 								{
@@ -44,20 +107,32 @@
 					"response": []
 				},
 				{
-					"name": "[GET]User Orders",
+					"name": "[GET]User Orders Seller By Id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:2000/user/44/orders",
+							"raw": "localhost:2000/user/5/orders/seller",
 							"host": [
 								"localhost"
 							],
 							"port": "2000",
 							"path": [
 								"user",
-								"44",
-								"orders"
+								"5",
+								"orders",
+								"seller"
 							],
 							"query": [
 								{
@@ -90,11 +165,16 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":  \"Taynessr1\",\n    \"email\": \"taynearjhony@hotmail.com\",\n    \"phone\": \"11986005601\",\n    \"login\": \"taynerjhosny1\",\n    \"password\": \"12ss3456\",\n    \"enabled\": 1,\n    \"user_address\": [\n        {\n            \"type_name\": \"Trabalho\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        },\n        {\n            \"type_name\": \"Casa\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        }\n    ] \n}",
+							"raw": "{\n    \"name\":  \"Taynessr1\",\n    \"email\": \"taynerjhony+1@hotmail.com\",\n    \"phone\": \"11986005601\",\n    \"login\": \"tayner\",\n    \"password\": \"Q1w2e3r4*\",\n    \"enabled\": 1,\n    \"user_address\": [\n        {\n            \"type_name\": \"Trabalho\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        },\n        {\n            \"type_name\": \"Casa\",\n            \"cep\": \"05012-020\",\n            \"street\": \"Tavares bastos\",\n            \"number\": \"61a\",\n            \"complement\": \"ap 62\",\n            \"district\": \"perdizes\",\n            \"city\": \"Sao Paulo\",\n            \"state\": \"SP\"\n        }\n    ] \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -118,7 +198,18 @@
 					"name": "[GET] User Detail by Id ",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/user/1",
 							"host": [
@@ -142,6 +233,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
 								"type": "text"
 							}
 						],
@@ -172,7 +268,13 @@
 					"name": "[DELETE] User Delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/user/1",
 							"host": [
@@ -201,7 +303,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"taynerjhony22\"\n}",
+							"raw": "{\n\t\"email\":\"taynerjhony@hotmail.com\",\n\t\"password\":\"Q1w2e3r4*\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -236,6 +338,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
 								"type": "text"
 							}
 						],
@@ -272,6 +379,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -302,7 +414,13 @@
 					"name": "[DELETE] User Address Delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/user/address/4",
 							"host": [
@@ -327,13 +445,19 @@
 					"name": "[POST]Product Create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "name",
-									"value": "Produto Teste 7",
+									"value": "Produto Teste 8",
 									"type": "text"
 								},
 								{
@@ -343,7 +467,7 @@
 								},
 								{
 									"key": "code",
-									"value": "23423456713",
+									"value": "23423456712w",
 									"type": "text"
 								},
 								{
@@ -358,12 +482,12 @@
 								},
 								{
 									"key": "slug_url",
-									"value": "3teretrter-tertertre3713",
+									"value": "3teretrter-tertertre37",
 									"type": "text"
 								},
 								{
 									"key": "sku",
-									"value": "45355431713",
+									"value": "45355431715",
 									"type": "text"
 								},
 								{
@@ -386,12 +510,7 @@
 									"type": "file",
 									"src": "/C:/Users/edison.junior/Desktop/Pessoal/downloadsss.jpg"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "localhost:2000/product",
@@ -410,7 +529,13 @@
 					"name": "[PUT]Product Update",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Produtodsddddsd Teste 2dsdsd\",\n    \"description\": \"Produto Description teste\"\n}",
@@ -438,7 +563,13 @@
 					"name": "[DELETE] Product Delete",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/product/9",
 							"host": [
@@ -457,9 +588,15 @@
 					"name": "[GET] Product Collection",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:2000/product",
+							"raw": "localhost:2000/product?",
 							"host": [
 								"localhost"
 							],
@@ -477,6 +614,10 @@
 									"key": "page",
 									"value": "2",
 									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null
 								}
 							]
 						}
@@ -487,7 +628,13 @@
 					"name": "[GET] Product Detail by Id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/product/33",
 							"host": [
@@ -511,10 +658,16 @@
 					"name": "[POST]Order Create",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user_id\": 43,\n    \"status_id\": 1,\n    \"user_address_id\": 5,\n    \"total\": 150.00,\n    \"products\": [\n        {\n            \"product_id\": 30,\n            \"qty\": 1\n        },\n         {\n            \"product_id\": 33,\n            \"qty\": 1\n        }\n    ]\n}",
+							"raw": "{\n    \"user_id\": 3,\n    \"user_id_seller\": 1,\n    \"status_id\": 1,\n    \"user_address_id\": 4,\n    \"total\": 150.00,\n    \"products\": [\n        {\n            \"product_id\": 1,\n            \"qty\": 1\n        },\n         {\n            \"product_id\": 5,\n            \"qty\": 1\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -538,7 +691,13 @@
 					"name": "[GET] Order Collection",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/order",
 							"host": [
@@ -568,7 +727,13 @@
 					"name": "[GET] Order Detail by Id",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:2000/order/5",
 							"host": [
@@ -592,6 +757,11 @@
 								"key": "Content-Type",
 								"name": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDEsImlhdCI6MTYyMDk4ODc1OCwiZXhwIjoxNjI2MTcyNzU4fQ.cPoyzdTF5s-jDtvkhv_O0aMo7eBytptTGqEMU0jgsMA",
 								"type": "text"
 							}
 						],

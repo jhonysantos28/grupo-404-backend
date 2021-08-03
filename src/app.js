@@ -19,5 +19,6 @@ app.use('/healthcheck/', require('./routes/System'));
 app.use('/user/', require('./routes/User'));
 app.use('/product/', require('./routes/Product'));
 app.use('/order/', require('./routes/SalesOrder'));
+app.use('/chart/', require('./routes/Charts'));
 
 module.exports = app;

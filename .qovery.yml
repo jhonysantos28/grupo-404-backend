@@ -1,0 +1,11 @@
+---
+application:
+  name: "grupo-404-backend"
+  project: "grupo_404"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-grupo-404-backend"
+  routes:
+  - application_name: "grupo-404-backend"
+    paths:
+    - "/*"
